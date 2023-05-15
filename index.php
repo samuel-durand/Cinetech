@@ -9,8 +9,7 @@ $router->setBasePath('/Cinetech');
 
 // map homepage
 $router->map( 'GET', '/', function() {
-    echo"to=choupie cest 
-    le best";
+
 });
 
 // map user details page
