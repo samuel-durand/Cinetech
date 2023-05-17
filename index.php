@@ -7,13 +7,16 @@ $router = new AltoRouter();
 $router->setBasePath('/Cinetech');
 
 
-// map homepage
-$router->map( 'GET', '/', function() {
+$router->map( 'GET', '/home', function() {
+    require_once('src/View/home.php');
 
-});
+
+}, 'homepage');
+// map homepage
+
 
 // map user details page
-$router->map( 'GET', '/user', function(  ) {
+$router->map( 'GET', '/home/user', function(  ) {
 });
 
 // match current request url
