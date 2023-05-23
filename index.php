@@ -1,5 +1,8 @@
 <?php
 
+use App\Controller\AuthControll;
+use App\Controller\AuthController;
+
 require_once("vendor/autoload.php");
 
 $router = new AltoRouter();
@@ -15,9 +18,16 @@ $router->map( 'GET', '/home', function() {
 // map homepage
 
 
-// map user details page
-$router->map( 'GET', '/home/user', function(  ) {
+$router->map( 'GET', '/home/register', function() {
+    require_once('src/View/register.php');
+
+}, 'register');
+
+$router->map('POST', '/home/register', function() {
+    $authController = new AuthController();
+    $authController->register($_POST['login'], $_POST['password']);
 });
+
 
 // match current request url
 $match = $router->match();

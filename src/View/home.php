@@ -1,21 +1,17 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <title>test</title>
+        <title>Home</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/style.css" rel="stylesheet">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script defer src="src/javascript/index.js"></script>
     </head>
-    <body>
-        <section>
-            <main>
-                <div>
-                    <form action="" method="post">
+    <body >  
 
-                    </form>
-                </div>
-            </main>
-        </section>
-        
+
+        <div id="movie" class="flex  items-center justify-between">
+
+        </div>
     </body>
 </html>

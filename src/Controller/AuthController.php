@@ -1,26 +1,43 @@
 <?php
 
-require_once 'Database/db.php'
-
 namespace App\Controller;
 
 use App\Model\UserModel;
 
 
-Class AuthControll {
+class AuthController {
+    public function register($login, $password)
+    {   
+        $login = htmlspecialchars(trim($login));
+        $password = htmlspecialchars(trim($password));
 
-    public function Register() {
-            //get the data from form 
+        // Vérification des champs
+        if (empty($login) || empty($password)) {
+            echo "Veuillez saisir un login et un mot de passe.";
+            exit();
+        }
 
-            $login = trim($_POST['login']);
-            $password = trim($_POST['password']);
+        // Hachage du mot de passe
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
+        $userModel = new UserModel();
 
-            // clean the data use htmlchars
-            $user = new user();
+        // Vérification si l'utilisateur existe déjà
+        if ($userModel->findId($login) !== null) {
+            echo "Cet utilisateur existe déjà. Veuillez choisir un autre login.";
+            exit();
+        }
 
+        // Insertion de l'utilisateur dans la base de données
+        $userModel->register($login, $hashedPassword);
+
+        echo "Inscription réussie !";
+
+        exit();
     }
 }
+
+
 
 
 
