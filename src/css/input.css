@@ -1,23 +1,26 @@
-* {
-    list-style: none;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-#movie {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    flex: 1 1 250px;
-    min-width: 250px;
-    max-width: 100%;
+.marquee {
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
   }
   
-  img {
-
+  .movie-container {
+    display: inline-block;
+    margin: 0 10px;
+    text-align: center;
   }
   
-
-
+  .movie-image {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .movie-title {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
   

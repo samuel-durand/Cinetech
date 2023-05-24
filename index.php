@@ -1,6 +1,6 @@
 <?php
 
-use App\Controller\AuthControll;
+
 use App\Controller\AuthController;
 
 require_once("vendor/autoload.php");
@@ -11,6 +11,9 @@ $router->setBasePath('/Cinetech');
 
 
 $router->map( 'GET', '/home', function() {
+    session_start();
+    include('src/View/header.php');
+
     require_once('src/View/home.php');
 
 
@@ -18,7 +21,38 @@ $router->map( 'GET', '/home', function() {
 // map homepage
 
 
+$router->map( 'GET', '/home/film', function() {
+    session_start();
+    include('src/View/header.php');
+
+    require_once('src/View/film.php');
+
+
+}, 'film');
+
+
+$router->map( 'GET', '/home/series', function() {
+    session_start();
+    include('src/View/header.php');
+
+    require_once('src/View/series.php');
+
+
+}, 'series');
+
+$router->map( 'GET', '/home/details', function() {
+    session_start();
+    include('src/View/header.php');
+
+    require_once('src/View/détail.php');
+
+
+}, 'details');
+
 $router->map( 'GET', '/home/register', function() {
+
+    include('src/View/header.php');
+
     require_once('src/View/register.php');
 
 }, 'register');
@@ -30,6 +64,8 @@ $router->map('POST', '/home/register', function() {
 
 
 $router->map( 'GET', '/home/login', function() {
+    include('src/View/header.php');
+
     require_once('src/View/login.php');
 
 
@@ -42,8 +78,16 @@ $router->map('POST', '/home/login', function() {
 
 $router->map('GET', '/home/profil', function() {
     session_start(); 
+
+    include('src/View/header.php');
     require_once('src/View/profil.php');
 }, 'profil');
+
+
+
+
+
+
 
 
 // match current request url

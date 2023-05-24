@@ -15,5 +15,10 @@
 
             </div>
         </div>
+
+        <div id="series" >
+            <div id="image">
+
+            </div>
     </body>
 </html>
