@@ -4,14 +4,16 @@
         <title>Home</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="src/css/input.css">
         <script defer src="src/javascript/index.js"></script>
     </head>
     <body >  
 
 
-        <div id="movie" class="flex  items-center justify-between">
+        <div id="movie" >
+            <div id="image">
 
+            </div>
         </div>
     </body>
 </html>

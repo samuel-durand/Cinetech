@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Controller;
 
 use App\Model\UserModel;
@@ -35,6 +36,40 @@ class AuthController {
 
         exit();
     }
+    public function login($login, $password)
+    {
+        $login = htmlspecialchars(trim($login));
+        $password = htmlspecialchars(trim($password));
+    
+        if (empty($login) || empty($password)) {
+            echo "Veuillez saisir un login et un mot de passe.";
+            exit();
+        }
+    
+        $userModel = new UserModel();
+    
+        $userData = $userModel->getUserByLogin($login, $password);
+    
+        if ($userData) {
+            $hashedPassword = $userData['password'];
+    
+            if (password_verify($password, $hashedPassword)) {
+                // Connexion réussie !
+                session_start();
+                $_SESSION['login'] = $userData; 
+                var_dump($userData);
+                header("Location: /Cinetech/home/profil");
+                exit();
+            }
+        }
+    
+        echo "Identifiants invalides. Veuillez réessayer.";
+        exit();
+    }
+    
+    
+    
+    
 }
 
 

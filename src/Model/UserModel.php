@@ -31,6 +31,15 @@ class UserModel {
             return null; 
         }
     }
+
+    public function getUserByLogin($login) {
+        $database = new PDO('mysql:host=localhost;dbname=cinetech;charset=utf8;port=3306', 'root', '');
+        $sql = "SELECT * FROM users WHERE login = ?";
+        $stmt = $database->prepare($sql);
+        $stmt->execute(array($login));
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
     
 
 }

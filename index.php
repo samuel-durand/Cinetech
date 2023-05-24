@@ -29,6 +29,23 @@ $router->map('POST', '/home/register', function() {
 });
 
 
+$router->map( 'GET', '/home/login', function() {
+    require_once('src/View/login.php');
+
+
+}, 'login');
+
+$router->map('POST', '/home/login', function() {
+    $authController = new AuthController();
+    $authController->login($_POST['login'], $_POST['password']);
+});
+
+$router->map('GET', '/home/profil', function() {
+    session_start(); 
+    require_once('src/View/profil.php');
+}, 'profil');
+
+
 // match current request url
 $match = $router->match();
 
