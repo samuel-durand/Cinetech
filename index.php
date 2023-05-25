@@ -31,6 +31,8 @@ $router->map( 'GET', '/home/film', function() {
 }, 'film');
 
 
+
+
 $router->map( 'GET', '/home/series', function() {
     session_start();
     include('src/View/header.php');
@@ -48,6 +50,14 @@ $router->map( 'GET', '/home/details', function() {
 
 
 }, 'details');
+
+
+$router->map('GET', '/home/details', function() {
+    session_start();
+    include('src/View/header.php');
+
+    require_once('src/View/détail.php');
+});
 
 $router->map( 'GET', '/home/register', function() {
 

@@ -8,9 +8,7 @@
         <script defer src="src/javascript/index.js"></script>
     </head>
     <body >  
-
-
-        <div id="movie" >
+    <div id="movie" >
             <div id="image">
 
             </div>
@@ -20,5 +18,7 @@
             <div id="image">
 
             </div>
+
+
     </body>
 </html>

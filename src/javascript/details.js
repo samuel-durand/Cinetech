@@ -8,19 +8,20 @@ fetch(url)
   .then(response => response.json())
   .then(data => {
     const movieTitle = data.title;
-    const movieDirector = data.director;
-    const movieGenres = data.genres;
-    const movieCountry = data.country;
-    const movieSummary = data.summary;
-    const movieActors = data.actors;
+    const moviePoster = `https://image.tmdb.org/t/p/w500${data.poster_path}`;
+    const movieSynopsis = data.overview;
 
     document.getElementById('movieTitle').textContent = movieTitle;
-    document.getElementById('movieDirector').textContent = movieDirector;
-    document.getElementById('movieGenres').textContent = movieGenres.join(', ');
-    document.getElementById('movieCountry').textContent = movieCountry;
-    document.getElementById('movieSummary').textContent = movieSummary;
-    document.getElementById('movieActors').textContent = movieActors.join(', ');
+
+    const posterElement = document.createElement('img');
+    posterElement.src = moviePoster;
+    posterElement.alt = movieTitle;
+    document.getElementById('moviePoster').appendChild(posterElement);
+
+    const synopsisElement = document.createElement('p');
+    synopsisElement.textContent = movieSynopsis;
+    document.getElementById('movieSynopsis').appendChild(synopsisElement);
   })
   .catch(error => {
-    console.log('Erreur lors de la récupération des détails du film:', error);
+    console.log('Erreur lors de la récupération des détails du film :', error);
   });

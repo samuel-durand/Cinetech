@@ -27,7 +27,7 @@ function displayMovies(movies, containerId) {
 
   movies.forEach((movie) => {
     const movieLink = document.createElement('a');
-    movieLink.href = '/home/details?id=' + movie.id;
+    movieLink.href = 'src/View/détail.php?id=' + movie.id; 
 
     const movieElement = document.createElement('div');
     movieElement.classList.add('movie');
@@ -45,6 +45,7 @@ function displayMovies(movies, containerId) {
     container.appendChild(movieLink);
   });
 }
+
 
 getMoviesByCompany(marvelCompanyId)
   .then((movies) => {

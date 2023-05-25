@@ -21,46 +21,35 @@ async function callTMDbAPI() {
       const seriesDiv = document.getElementById('series');
       seriesDiv.innerHTML = '';
       seriesDiv.classList.add('movie-container');
-
       movies.forEach(movie => {
         const movieTitle = movie.title;
         const movieImage = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-
+        const movieId = movie.id;
+        const moviePoster = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+      
         const movieContainer = document.createElement('div');
         movieContainer.classList.add('movie-item');
-
+      
         const imageElement = document.createElement('img');
         imageElement.src = movieImage;
         imageElement.classList.add('movie-image');
-
+      
         const titleElement = document.createElement('p');
         titleElement.textContent = movieTitle;
         titleElement.classList.add('movie-title');
-
+      
         movieContainer.appendChild(imageElement);
         movieContainer.appendChild(titleElement);
         movieDiv.appendChild(movieContainer);
+      
+        movieContainer.addEventListener('click', () => {
+          const movieUrlFr = `/Cinetech/home/details?id=${movieId}&poster=${encodeURIComponent(moviePoster)}`;
+      
+          window.location.href = movieUrlFr;
+        });
       });
+      
 
-      series.forEach(serie => {
-        const serieTitle = serie.name;
-        const serieImage = `https://image.tmdb.org/t/p/w500${serie.poster_path}`;
-
-        const serieContainer = document.createElement('div');
-        serieContainer.classList.add('movie-item');
-
-        const imageElement = document.createElement('img');
-        imageElement.src = serieImage;
-        imageElement.classList.add('movie-image');
-
-        const titleElement = document.createElement('p');
-        titleElement.textContent = serieTitle;
-        titleElement.classList.add('movie-title');
-
-        serieContainer.appendChild(imageElement);
-        serieContainer.appendChild(titleElement);
-        seriesDiv.appendChild(serieContainer);
-      });
     } else {
       console.log('Erreur lors de la requête. Statut : ' + response.status);
     }
