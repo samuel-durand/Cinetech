@@ -78,6 +78,38 @@ async function callTMDbAPI() {
         });
       });
 
+      const moviePrevButton = document.getElementById('moviePrevButton');
+      const movieNextButton = document.getElementById('movieNextButton');
+      const seriesPrevButton = document.getElementById('seriesPrevButton');
+      const seriesNextButton = document.getElementById('seriesNextButton');
+
+      moviePrevButton.addEventListener('click', () => {
+        movieDiv.scrollBy({
+          left: -300,
+          behavior: 'smooth'
+        });
+      });
+
+      movieNextButton.addEventListener('click', () => {
+        movieDiv.scrollBy({
+          left: 300,
+          behavior: 'smooth'
+        });
+      });
+
+      seriesPrevButton.addEventListener('click', () => {
+        seriesDiv.scrollBy({
+          left: -300,
+          behavior: 'smooth'
+        });
+      });
+
+      seriesNextButton.addEventListener('click', () => {
+        seriesDiv.scrollBy({
+          left: 300,
+          behavior: 'smooth'
+        });
+      });
     } else {
       console.log('Erreur lors de la requête. Statut : ' + response.status);
     }

@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="/Cinetech/src/css/input.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
 </head>
 <body>
-    <section>
+<section>
         <main>
             <div>
                 <form action="" method="post">
@@ -22,6 +23,6 @@
             </div>
         </main>
     </section>
-    
+
 </body>
 </html>

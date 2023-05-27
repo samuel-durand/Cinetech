@@ -17,5 +17,16 @@
 <div id="relatedSeries"></div>
 
 
+<form id="commentForm">
+  <div>
+    <label for="comment">Comment:</label>
+    <textarea id="comment" name="comment" rows="4" required></textarea>
+  </div>
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+</form>
+
+
 </body>
 </html>

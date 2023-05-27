@@ -7,5 +7,5 @@
 </div>
 
 <button id="searchButton">
-  <i class="fas fa-search"></i> Search
+  <i class="fas fa-search"></i> 
 </button>

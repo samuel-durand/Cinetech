@@ -86,6 +86,8 @@ $router->map('POST', '/home/login', function() {
     $authController->login($_POST['login'], $_POST['password']);
 });
 
+
+
 $router->map('GET', '/home/profil', function() {
     session_start(); 
 

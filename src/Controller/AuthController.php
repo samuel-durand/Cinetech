@@ -62,6 +62,35 @@ class AuthController {
         exit();
     }
 
+public function postComment(Request $request)
+{
+    $validatedData = $request->validate([
+        'comment' => 'required|max:255',
+    ]);
+
+    if (!$this->areAllFieldsFilled($validatedData)) {
+        return redirect()->back()->with('error', 'Please fill out all required fields');
+    }
+
+    $userId = auth()->user()->id;
+
+    UserComment($validatedData['comment'], $userId);
+
+    return redirect()->back()->with('success', 'Comment posted successfully');
+}
+
+public function areAllFieldsFilled($data)
+{
+    $requiredFields = ['comment'];
+
+    foreach ($requiredFields as $field) {
+        if (empty($data[$field])) {
+            return false;
+        }
+    }
+
+    return true;
+}
 
     
     

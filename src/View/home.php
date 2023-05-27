@@ -12,11 +12,18 @@
     </head>
     <body >  
         <h3>Movies</h3>
-    <div class="marquee">
-  <div id="movie" class="movie-container"></div>
+        <div class="movie-container">
+  <button id="moviePrevButton" class="scroll-button prev-button"><i class="fas fa-chevron-left"></i></button>
+  <div id="movie" class="movie-items"></div>
+  <button id="movieNextButton" class="scroll-button next-button"><i class="fas fa-chevron-right"></i></button>
 </div>
-<h3>Series</h3>
-<div id="series" class="movie-container"></div>
+
+<div class="movie-container">
+  <button id="seriesPrevButton" class="scroll-button prev-button"><i class="fas fa-chevron-left"></i></button>
+  <div id="series" class="movie-items"></div>
+  <button id="seriesNextButton" class="scroll-button next-button"><i class="fas fa-chevron-right"></i></button>
+</div>
+
 
 
     </body>
