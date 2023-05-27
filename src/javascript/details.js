@@ -2,9 +2,10 @@ const urlParams = new URLSearchParams(window.location.search);
 const movieId = urlParams.get('id');
 
 const apiKey = '8a71cb8331edbcb8f4ba827b91a64b37';
-const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`;
+const movieUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`;
+const seriesUrl = `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${apiKey}`;
 
-fetch(url)
+fetch(movieUrl)
   .then(response => response.json())
   .then(data => {
     const movieTitle = data.title;
@@ -25,3 +26,5 @@ fetch(url)
   .catch(error => {
     console.log('Erreur lors de la récupération des détails du film :', error);
   });
+
+ 

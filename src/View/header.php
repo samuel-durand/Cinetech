@@ -1,5 +1,6 @@
 
 <header>
+
         <?php
 
         if (isset($_SESSION['login'])) {
@@ -16,4 +17,6 @@
             echo '<a href="/Cinetech/home/film-and-series">Film et Series</a>';
         }
         ?>
+        <?php require_once('research.php') ?>
+
     </header>
