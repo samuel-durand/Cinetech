@@ -13,16 +13,17 @@
         <div class="register-form">
             <form action="" method="post">
                 <label for="login">Login</label>
-                <input type="text" name="login" id="login">
+                <input type="text" name="login" id="login" class="form-input">
 
                 <label for="password">Password</label>
-                <input type="password" name="password" id="password">
+                <input type="password" name="password" id="password" class="form-input">
 
-                <input type="submit" value="S'inscrire">
+                <input type="submit" value="S'inscrire" class="form-submit">
             </form>
         </div>
     </main>
 </section>
+
 
     
 </body>

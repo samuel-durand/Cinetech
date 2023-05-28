@@ -50,33 +50,7 @@ async function callTMDbAPI() {
         });
       });
 
-      series.forEach(serie => {
-        const serieTitle = serie.name;
-        const serieImage = `https://image.tmdb.org/t/p/w500${serie.poster_path}`;
-        const serieId = serie.id;
-        const seriePoster = `https://image.tmdb.org/t/p/w500${serie.poster_path}`;
-
-        const serieContainer = document.createElement('div');
-        serieContainer.classList.add('movie-item');
-
-        const imageElement = document.createElement('img');
-        imageElement.src = serieImage;
-        imageElement.classList.add('movie-image');
-
-        const titleElement = document.createElement('p');
-        titleElement.textContent = serieTitle;
-        titleElement.classList.add('movie-title');
-
-        serieContainer.appendChild(imageElement);
-        serieContainer.appendChild(titleElement);
-        seriesDiv.appendChild(serieContainer);
-
-        serieContainer.addEventListener('click', () => {
-          const serieUrlFr = `/Cinetech/home/details?id=${serieId}&poster=${encodeURIComponent(seriePoster)}`;
-
-          window.location.href = serieUrlFr;
-        });
-      });
+      displaySeries(series, seriesDiv);
 
       const moviePrevButton = document.getElementById('moviePrevButton');
       const movieNextButton = document.getElementById('movieNextButton');
@@ -117,5 +91,72 @@ async function callTMDbAPI() {
     console.log('Erreur lors de la requête:', error);
   }
 }
+
+async function getSeriesByCompany(companyId) {
+  const apiKey = '8a71cb8331edbcb8f4ba827b91a64b37';
+  const seriesUrl = `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&with_companies=${companyId}`;
+
+  try {
+    const response = await fetch(seriesUrl);
+    if (response.ok) {
+      const data = await response.json();
+      const series = data.results;
+      return series;
+    } else {
+      console.log('Erreur lors de la requête. Statut : ' + response.status);
+      return [];
+    }
+  } catch (error) {
+    console.log('Erreur lors de la requête :', error);
+    return [];
+  }
+}
+
+function redirectToDetails(serieId, seriePoster) {
+  const serieUrlFr = `/Cinetech/home/series_details?id=${serieId}&poster=${encodeURIComponent(seriePoster)}`;
+  window.location.href = serieUrlFr;
+}
+
+function displaySeries(series, seriesDiv) {
+  series.forEach(serie => {
+    const serieTitle = serie.name;
+    const serieImage = `https://image.tmdb.org/t/p/w500${serie.poster_path}`;
+    const serieId = serie.id;
+    const seriePoster = `https://image.tmdb.org/t/p/w500${serie.poster_path}`;
+
+    const serieContainer = document.createElement('div');
+    serieContainer.classList.add('movie-item');
+
+    const imageElement = document.createElement('img');
+    imageElement.src = serieImage;
+    imageElement.classList.add('movie-image');
+
+    const titleElement = document.createElement('p');
+    titleElement.textContent = serieTitle;
+    titleElement.classList.add('movie-title');
+
+    serieContainer.appendChild(imageElement);
+    serieContainer.appendChild(titleElement);
+    seriesDiv.appendChild(serieContainer);
+
+    serieContainer.addEventListener('click', () => {
+      redirectToDetails(serieId, seriePoster);
+    });
+  });
+}
+
+const marvelCompanyId = 420;
+const disneyCompanyId = 2;
+
+getSeriesByCompany(marvelCompanyId)
+  .then((series) => {
+    const seriesDiv = document.getElementById('series');
+    seriesDiv.innerHTML = '';
+    seriesDiv.classList.add('movie-container');
+    displaySeries(series, seriesDiv);
+  })
+  .catch((error) => {
+    console.log('Erreur lors de la récupération des séries Marvel :', error);
+  });
 
 callTMDbAPI();

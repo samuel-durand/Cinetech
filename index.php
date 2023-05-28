@@ -51,6 +51,16 @@ $router->map( 'GET', '/home/details', function() {
 
 }, 'details');
 
+$router->map( 'GET', '/home/series_details', function() {
+    session_start();
+    include('src/View/header.php');
+
+    require_once('src/View/series_details.php');
+
+
+}, 'series_details');
+
+
 
 $router->map('GET', '/home/details', function() {
     session_start();
