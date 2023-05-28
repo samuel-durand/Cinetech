@@ -46,6 +46,17 @@ h3 {
   color: #fff;
 }
 
+h2 {
+  color: white;
+
+}
+
+p {
+  color: white;
+  text-decoration: none;
+}
+
+
 a {
   color: white;
   text-decoration: none;
@@ -285,4 +296,53 @@ a {
 .register-form .form-submit:hover {
   background-color: #e36200;
 }
+
+.serie-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.serie {
+  margin: 10px;
+  text-align: center;
+}
+
+.serie img {
+  border: 2px solid #ddd;
+  border-radius: 5px;
+}
+
+
+.movie-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.movie {
+  margin: 10px;
+  text-align: center;
+}
+
+.movie img {
+  border: 2px solid #ddd;
+  border-radius: 5px;
+
+}
+
+
+
+.movie-details-container {
+  display: flex;
+  align-items: center;
+}
+
+.movie-details {
+  margin-left: 20px;
+  flex-grow: 1;
+  border-left: 1px solid #ccc;
+  padding-left: 20px;
+}
+
 

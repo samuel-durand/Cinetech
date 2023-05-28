@@ -11,9 +11,13 @@
 </head>
 <body>
 <!-- Pour les détails du film -->
-<h2 id="movieTitle"></h2>
-<div id="moviePoster"></div>
-<div id="movieSynopsis"></div>
+<div class="movie-details-container">
+  <div id="moviePoster"></div>
+  <div class="movie-details">
+    <h2 id="movieTitle"></h2>
+    <div id="movieSynopsis"></div>
+  </div>
+</div>
 
 
 

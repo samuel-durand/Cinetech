@@ -2,23 +2,28 @@ const apiKey = '8a71cb8331edbcb8f4ba827b91a64b37';
 const marvelCompanyId = 420;
 const disneyCompanyId = 2;
 
-async function getSeriesByCompany(companyId) {
-  const url = `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&with_companies=${companyId}`;
+async function getSeriesByCompany(companyId, totalPages) {
+  const seriesPerPage = 20; // Nombre de séries par page
+  const series = [];
 
-  try {
-    const response = await fetch(url);
-    if (response.ok) {
-      const data = await response.json();
-      const series = data.results;
-      return series;
-    } else {
-      console.log('Erreur lors de la requête. Statut : ' + response.status);
-      return [];
+  for (let page = 1; page <= totalPages; page++) {
+    const url = `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&with_companies=${companyId}&page=${page}`;
+
+    try {
+      const response = await fetch(url);
+      if (response.ok) {
+        const data = await response.json();
+        const pageSeries = data.results;
+        series.push(...pageSeries);
+      } else {
+        console.log('Erreur lors de la requête. Statut : ' + response.status);
+      }
+    } catch (error) {
+      console.log('Erreur lors de la requête :', error);
     }
-  } catch (error) {
-    console.log('Erreur lors de la requête :', error);
-    return [];
   }
+
+  return series;
 }
 
 function redirectToDetails(serieId) {
@@ -53,18 +58,14 @@ function displaySeries(series, containerId) {
   });
 }
 
-getSeriesByCompany(marvelCompanyId)
-  .then((series) => {
-    displaySeries(series, 'series');
-  })
-  .catch((error) => {
-    console.log('Erreur lors de la récupération des séries Marvel :', error);
-  });
+const marvelSeries = getSeriesByCompany(marvelCompanyId, 2); // Récupère 2 pages de séries Marvel (40 séries au total)
+const disneySeries = getSeriesByCompany(disneyCompanyId, 2); // Récupère 2 pages de séries Disney (40 séries au total)
 
-getSeriesByCompany(disneyCompanyId)
-  .then((series) => {
-    displaySeries(series, 'series');
+Promise.all([marvelSeries, disneySeries])
+  .then(([marvelSeries, disneySeries]) => {
+    const allSeries = [...marvelSeries, ...disneySeries];
+    displaySeries(allSeries, 'series');
   })
   .catch((error) => {
-    console.log('Erreur lors de la récupération des séries Disney :', error);
+    console.log('Erreur lors de la récupération des séries Marvel et Disney :', error);
   });

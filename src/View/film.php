@@ -12,8 +12,7 @@
 
 </head>
 <body>
-    <div id="movie">
-
+<div id="movie" class="movie-container">
     </div>
     
 </body>

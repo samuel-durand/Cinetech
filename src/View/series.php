@@ -10,7 +10,7 @@
     <title>Series</title>
 </head>
 <body>
-<div id="series"></div>
+<div id="series" class="serie-container"></div>
 
     
 </body>
