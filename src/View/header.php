@@ -12,7 +12,9 @@
         echo '<a href="/Cinetech/home" class="header-link">Home</a>';
         echo '<a href="/Cinetech/home/register" class="header-link">Inscription</a>';
         echo '<a href="/Cinetech/home/login" class="header-link">Connexion</a>';
-        echo '<a href="/Cinetech/home/film-and-series" class="header-link">Film et Series</a>';
+        echo '<a href="/Cinetech/home/film" class="header-link">Film</a>';
+        echo '<a href="/Cinetech/home/series" class="header-link">series</a>';
+
     }
     ?>
     <?php require_once('research.php') ?>
