@@ -9,16 +9,14 @@ use PDO;
 
 class UserModel {
     public function register($login, $password) {
-        $database = new PDO('mysql:host=localhost;dbname=cinetech;charset=utf8;port=3306', 'root', '');
-        $registerDate = date('Y-m-d H:i:s'); 
-        
-        $sql = "INSERT INTO users (login, password, register_date) VALUES (?, ?, ?)";
+        $database = new PDO('mysql:host=localhost;dbname=cinetech', 'root', '');
+        $sql = "INSERT INTO users (login, password) VALUES (?, ?)";
         $stmt = $database->prepare($sql);
-        $stmt->execute(array($login, $password, $registerDate));
+        $stmt->execute(array($login, $password));
     }
 
     public function findId($login) {
-        $database = new PDO('mysql:host=localhost;dbname=cinetech;charset=utf8;port=3306', 'root', '');
+        $database = new PDO('mysql:host=localhost;dbname=cinetech', 'root', '');
         $sql = "SELECT id FROM users WHERE login = ?";
         $stmt = $database->prepare($sql);
         $stmt->execute(array($login));
@@ -32,23 +30,54 @@ class UserModel {
         }
     }
 
-    public function getUserByLogin($login) {
-        $database = new PDO('mysql:host=localhost;dbname=cinetech;charset=utf8;port=3306', 'root', '');
-        $sql = "SELECT * FROM users WHERE login = ?";
-        $stmt = $database->prepare($sql);
-        $stmt->execute(array($login));
+    public function getUserByLogin($login)
+{
+    $database = new PDO('mysql:host=localhost;dbname=cinetech', 'root', '');
+    $sql = "SELECT * FROM users WHERE login = ?";
+    $stmt = $database->prepare($sql);
+    $stmt->execute([$login]);
 
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
 
- 
+
+public function insertComment($comments, $commentTime)
+{
+    $database = new PDO('mysql:host=localhost;dbname=cinetech', 'root', '');
+    $sql = "INSERT INTO comments (user_id, comments, comments_time) 
+            SELECT id, ?, ?
+            FROM users
+            WHERE users.login = ?";
+    $stmt = $database->prepare($sql);
+
+    // Récupérer le login de l'utilisateur depuis la session ou toute autre source appropriée
+    $login = $_SESSION['login']; // Remplacez 'login' par la clé appropriée pour obtenir le login
+
+    $stmt->execute([$comments, $commentTime, $login]);
+
+    return true;
+}
+
+
+
 
     
-    
-    
-    
+
+
+
 
 }
+    
+    
+    
+    
+
+
+
+
+
+
+
 
 
 ?>

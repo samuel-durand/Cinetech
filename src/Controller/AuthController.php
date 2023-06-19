@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use App\Model\UserModel;
 
+
 class AuthController {
     public function register($login, $password)
     {   
@@ -62,16 +63,42 @@ class AuthController {
         echo "Identifiants invalides. Veuillez réessayer.";
         exit();
     }
-
-
-
+    public function Addcomment()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $comments = $_POST['comments'];
+            $commentTime = date("Y-m-d H:i:s");
+    
+            $userModel = new UserModel();
+    
+            // Insérer le commentaire en utilisant la fonction insertComment()
+            $result = $userModel->insertComment($comments, $commentTime);
+            if ($result) {
+                echo "Success: Comment added.";
+            } else {
+                echo "Error: Unable to add comment.";
+            }
+        }
+    }
     
     
     
-}
+    }
+    
+    
+    
+    
 
+
+    
+
+
+    
 
 
 
 
 ?>
+
+
+

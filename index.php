@@ -51,6 +51,25 @@ $router->map( 'GET', '/home/details', function() {
 
 }, 'details');
 
+$router->map('POST', '/home/details', function() {
+    session_start();
+
+    include('src/View/header.php');
+
+    // Instancier le AuthController
+    $authController = new AuthController();
+    // Appeler la méthode Addcomment() du AuthController
+    $authController->Addcomment();
+
+    require_once('src/View/détail.php');
+    var_dump($_POST);
+}, 'comment');
+
+
+
+
+
+
 $router->map( 'GET', '/home/series_details', function() {
     session_start();
     include('src/View/header.php');

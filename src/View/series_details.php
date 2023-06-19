@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/Cinetech/src/css/input.css">
     <script defer src="/Cinetech/src/javascript/series_details.js"></script>
+    <script defer src="/Cinetech/src/javascript/recommendation.js"></script>
 
     <title>Détails</title>
 </head>
@@ -19,13 +20,16 @@
 
 <form id="commentForm">
   <div>
-    <label for="comment">Comment:</label>
-    <textarea id="comment" name="comment" rows="4" required></textarea>
+    <label for="comments">Comment:</label>
+    <input type="text">
   </div>
   <div>
     <button type="submit">Submit</button>
   </div>
 </form>
+
+<div id="similarSeriesContainer"></div>
+
 
 
 </body>

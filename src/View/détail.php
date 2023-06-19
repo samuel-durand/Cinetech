@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="/Cinetech/src/javascript/details.js"></script>
+
     <link rel="stylesheet" href="/Cinetech/src/css/input.css">
 
     <title>Détails</title>
@@ -22,16 +23,19 @@
 
 
 
-
-<form id="commentForm">
+<form id="commentForm" method="post">
   <div>
-    <label for="comment">Comment:</label>
-    <textarea id="comment" name="comment" rows="4" required></textarea>
+    <label for="comments">Comment:</label>
+    <textarea id="comment" name="comments" rows="4" cols="20" required></textarea>
   </div>
   <div>
-    <button type="submit">Submit</button>
+    <button id="button-form" type="submit">Submit</button>
   </div>
 </form>
+
+
+<div id="similarMoviesContainer"></div>
+
 
 
 </body>

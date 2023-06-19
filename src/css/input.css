@@ -335,14 +335,53 @@ a {
 
 .movie-details-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
 .movie-details {
-  margin-left: 20px;
-  flex-grow: 1;
-  border-left: 1px solid #ccc;
-  padding-left: 20px;
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+  padding-top: 20px;
 }
 
 
+
+#commentForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  margin: 15px;
+}
+
+#comment {
+  display: block;
+  background-color: rgba(255, 255, 255, 0.144); /* Couleur de fond transparente */
+  backdrop-filter: blur(10px); /* Flou de l'arrière-plan */
+  border: none; /* Suppression de la bordure par défaut */
+  border-radius: 8px; /* Bordures arrondies */
+  padding: 10px; /* Marge interne */
+  color: white;
+  width: 487px;
+  height: 87px; 
+}
+
+
+#button-form {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.144); 
+  backdrop-filter: blur(10px);
+  border: none; 
+  color: white;
+  border-radius: 8px;
+  margin: 5px auto;
+  padding: 15px;
+  cursor: pointer;
+}
+
+#moviePoster img {
+  
+  margin: 15px auto;
+  border: 15px;
+  border-radius: 15px;
+}
